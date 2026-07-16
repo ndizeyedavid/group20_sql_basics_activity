@@ -34,3 +34,6 @@ WHERE classroom_id = 6;
 
 DELETE FROM Classroom
 WHERE classroom_id = 5;
+
+SELECT *
+FROM Classroom;
