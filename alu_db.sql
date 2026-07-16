@@ -14,3 +14,7 @@ INSERT INTO Classroom (classroom_id, room_number, building, capacity) VALUES
 (5, '301', 'Arts Building',  20),
 (6, '302', 'Arts Building',  50),
 (7, '110', 'Main Hall',      45);
+
+SELECT *
+FROM Classroom
+WHERE building = 'Main Hall';
