@@ -27,3 +27,7 @@ UPDATE Classroom
 SET capacity =60,
 	room_number = '303'
 WHERE classroom_id = 6;
+
+SELECT *
+FROM Classroom
+WHERE classroom_id = 6;
