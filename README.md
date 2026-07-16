@@ -4,9 +4,10 @@ In repository we have a collaborative SQL script, developed in strict dependency
 
 ## Database Schema Diagram
 
-""" WE WILL ADD THE SCHEMA DIAGRAM HERE LATER """
+<img width="1448" height="312" alt="image" src="https://github.com/user-attachments/assets/52484fb1-4791-4bee-a235-4d15d5305476" />
 
-## Team Roles & Build Order
+
+## Team Roles
 
 | Team Member | Table / Task Assigned               | Dependency                                   |
 | ----------- | ----------------------------------- | -------------------------------------------- |
