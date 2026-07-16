@@ -1,6 +1,16 @@
+#1.
 CREATE TABLE classroom (
 	classroom_id INT PRIMARY KEY,
 	room_number VARCHAR(10) NOT NULL,
 	building VARCHAR(50) NOT NULL,
 	capacity INT
 );
+
+INSERT INTO Classroom (classroom_id, room_number, building, capacity) VALUES
+(1, '101', 'Main Hall',      30),
+(2, '102', 'Main Hall',      25),
+(3, '201', 'Science Block',  40),
+(4, '202', 'Science Block',  35),
+(5, '301', 'Arts Building',  20),
+(6, '302', 'Arts Building',  50),
+(7, '110', 'Main Hall',      45);
