@@ -1,5 +1,5 @@
 #1.
-CREATE TABLE classroom (
+CREATE TABLE Classroom (
 	classroom_id INT PRIMARY KEY,
 	room_number VARCHAR(10) NOT NULL,
 	building VARCHAR(50) NOT NULL,
@@ -18,3 +18,7 @@ INSERT INTO Classroom (classroom_id, room_number, building, capacity) VALUES
 SELECT *
 FROM Classroom
 WHERE building = 'Main Hall';
+
+SELECT *
+FROM Classroom
+WHERE capacity > 30;
