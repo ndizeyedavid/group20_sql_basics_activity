@@ -160,8 +160,15 @@ INSERT INTO Courses
         (305, 'Business Strategy', 3, 105, 7),
         (306, 'Advanced Coding', 4, 106, 6);
 
-# Selecting records using joins - David
+# Selecting course records using joins to expand the classroom and faculty details - David
+SELECT Courses.course_id, Courses.course_name, Courses.credits, Faculty.name, Classroom.building, Classroom.capacity
+    FROM Courses
+        INNER JOIN Faculty ON Courses.faculty_id = Faculty.faculty_id 
+        INNER JOIN Classroom ON Courses.classroom_id = Classroom.classroom_id;
+
+# Selecting all courses taught by "Dr Emily Davis" - David
 SELECT Courses.course_id, Courses.course_name, Courses.credits, Faculty.name, Classroom.building, Classroom.capacity
     FROM Courses
         INNER JOIN Faculty ON Courses.faculty_id = Faculty.faculty_id 
         INNER JOIN Classroom ON Courses.classroom_id = Classroom.classroom_id
+            WHERE Faculty.faculty_id = 105
