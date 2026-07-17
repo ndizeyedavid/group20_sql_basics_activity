@@ -1,5 +1,3 @@
--- Active: 1784281163654@@mysql-168a8dfe-alustudent-5968.b.aivencloud.com@17422@defaultdb
-#1.
 CREATE TABLE Classroom (
 	classroom_id INT PRIMARY KEY,
 	room_number VARCHAR(10) NOT NULL,
@@ -79,25 +77,61 @@ CREATE TABLE Students (
     enrollment_date DATE,
     FOREIGN KEY (classroom_id) REFERENCES Classroom(classroom_id)
 );
+
 # Insert sample records - Juliana Ngoh
 INSERT INTO Students (student_id, name, email, classroom_id, enrollment_date)
-VALUES
-(1, 'Student One', 'student1@alu.edu', 1, '2026-01-10'),
-(2, 'Student Two', 'student2@alu.edu', 2, '2026-01-11'),
-(3, 'Student Three', 'student3@alu.edu', 3, '2026-01-12'),
-(4, 'Student Four', 'student4@alu.edu', 4, '2026-01-13'),
-(5, 'Student Five', 'student5@alu.edu', 6, '2026-01-14');
+  VALUES
+    (1, 'Student One', 'student1@alu.edu', 1, '2026-01-10'),
+    (2, 'Student Two', 'student2@alu.edu', 2, '2026-01-11'),
+    (3, 'Student Three', 'student3@alu.edu', 3, '2026-01-12'),
+    (4, 'Student Four', 'student4@alu.edu', 4, '2026-01-13'),
+    (5, 'Student Five', 'student5@alu.edu', 6, '2026-01-14');
+
 # Find students in classroom 1 - Juliana Ngoh
+SELECT * FROM Students WHERE classroom_id = 1;
+
+# Display all students - Juliana Ngoh
 SELECT *
-FROM Students
-WHERE classroom_id = 1;
+FROM Students;
+
 # Update a student's email - Juliana Ngoh
 UPDATE Students
 SET email = 'student4_updated@alu.edu'
 WHERE student_id = 4;
+
 # Delete a student record - Juliana Ngoh
 DELETE FROM Students
 WHERE student_id = 5;
-# Display all students - Juliana Ngoh
-SELECT *
-FROM Students;
+
+# Create Extra_Curricular_Activities table - Calvin
+CREATE TABLE Extra_Curricular_Activities (
+	activity_id INT PRIMARY KEY,
+	activity_name VARCHAR(100),
+	category VARCHAR(50),
+	faculty_advisor_id INT,
+	FOREIGN KEY (faculty_advisor_id) REFERENCES Faculty(faculty_id)
+);
+
+# Insert sample records - Calvin
+INSERT INTO Extra_Curricular_Activities (activity_id, activity_name, category, faculty_advisor_id)
+    VALUES
+        (201, 'Robotics Club', 'Technology', 101),
+        (202, 'Debate Society', 'Academic', 102),
+        (203, 'Basketball Team', 'Sports', 103),
+        (204, 'Drama Club', 'Arts', 104),
+        (205, 'Entrepreneurship Society', 'Business', 105),
+        (206, 'Coding Bootcamp', 'Technology', 101),
+        (207, 'Chess Club', 'Academic', 102);
+
+# Find activities that belong to the 'Technology' category - Calvin
+SELECT * FROM Extra_Curricular_Activities
+WHERE category = 'Technology';
+
+# Update an activity by activity_id - Calvin
+UPDATE Extra_Curricular_Activities
+SET activity_name = 'Advanced Robotics Club'
+WHERE activity_id = 201;
+
+# Delete one specific activity - Calvin
+DELETE FROM Extra_Curricular_Activities
+WHERE activity_id = 207;
