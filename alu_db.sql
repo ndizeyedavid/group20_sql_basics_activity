@@ -150,7 +150,8 @@ CREATE TABLE Courses(
     Foreign Key (classroom_id) REFERENCES Classroom(classroom_id)
 );
 
-INSERT INTO courses
+# Inserting 6 sample records - David
+INSERT INTO Courses
     VALUES
         (301, 'Intro to Software Engineering', 3, 101, 1),
         (303, 'Entrepreneurship', 3, 103, 3),
@@ -158,3 +159,9 @@ INSERT INTO courses
         (304, 'Drama and Performance', 2, 104, 4),
         (305, 'Business Strategy', 3, 105, 7),
         (306, 'Advanced Coding', 4, 106, 6);
+
+# Selecting records using joins - David
+SELECT Courses.course_id, Courses.course_name, Courses.credits, Faculty.name, Classroom.building, Classroom.capacity
+    FROM Courses
+        INNER JOIN Faculty ON Courses.faculty_id = Faculty.faculty_id 
+        INNER JOIN Classroom ON Courses.classroom_id = Classroom.classroom_id
