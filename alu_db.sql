@@ -91,3 +91,7 @@ VALUES
 SELECT *
 FROM Students
 WHERE classroom_id = 1;
+# Update a student's email - Juliana Ngoh
+UPDATE Students
+SET email = 'student4_updated@alu.edu'
+WHERE student_id = 4;
