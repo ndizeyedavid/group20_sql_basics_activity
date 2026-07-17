@@ -69,6 +69,7 @@ WHERE faculty_id = 103;
 # Delete a record - Kelvin Bruce
 DELETE FROM Faculty
 WHERE faculty_id = 106;
+
 # Create Extra_Curricular_Activities table - Calvin
 CREATE TABLE Extra_Curricular_Activities (
 	activity_id INT PRIMARY KEY,
