@@ -1,3 +1,4 @@
+-- Active: 1784281163654@@mysql-168a8dfe-alustudent-5968.b.aivencloud.com@17422@defaultdb
 #1.
 CREATE TABLE Classroom (
 	classroom_id INT PRIMARY KEY,
@@ -6,37 +7,37 @@ CREATE TABLE Classroom (
 	capacity INT
 );
 
-INSERT INTO Classroom (classroom_id, room_number, building, capacity) VALUES
-(1, '101', 'Main Hall',      30),
-(2, '102', 'Main Hall',      25),
-(3, '201', 'Science Block',  40),
-(4, '202', 'Science Block',  35),
-(5, '301', 'Arts Building',  20),
-(6, '302', 'Arts Building',  50),
-(7, '110', 'Main Hall',      45);
+INSERT INTO
+    Classroom (
+        classroom_id,
+        room_number,
+        building,
+        capacity
+    )
+VALUES (1, '101', 'Main Hall', 30),
+    (2, '102', 'Main Hall', 25),
+    (3, '201', 'Science Block', 40),
+    (4, '202', 'Science Block', 35),
+    (5, '301', 'Arts Building', 20),
+    (6, '302', 'Arts Building', 50),
+    (7, '110', 'Main Hall', 45);
 
-SELECT *
-FROM Classroom
-WHERE building = 'Main Hall';
+SELECT * FROM Classroom WHERE building = 'Main Hall';
 
-SELECT *
-FROM Classroom
-WHERE capacity > 30;
+SELECT * FROM Classroom WHERE capacity > 30;
 
 UPDATE Classroom
-SET capacity =60,
-	room_number = '303'
-WHERE classroom_id = 6;
+SET
+    capacity = 60,
+    room_number = '303'
+WHERE
+    classroom_id = 6;
 
-SELECT *
-FROM Classroom
-WHERE classroom_id = 6;
+SELECT * FROM Classroom WHERE classroom_id = 6;
 
-DELETE FROM Classroom
-WHERE classroom_id = 5;
+DELETE FROM Classroom WHERE classroom_id = 5;
 
-SELECT *
-FROM Classroom;
+SELECT * FROM Classroom;
 
 # Create faculty_table - Kelvin Bruce
 CREATE TABLE Faculty ( 
@@ -68,4 +69,13 @@ WHERE faculty_id = 103;
 
 # Delete a record - Kelvin Bruce
 DELETE FROM Faculty
-WHERE faculty_id = 106;
+
+# Create Students table - Juliana Ngoh
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    classroom_id INT,
+    enrollment_date DATE,
+    FOREIGN KEY (classroom_id) REFERENCES Classroom(classroom_id)
+);
