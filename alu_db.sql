@@ -87,3 +87,7 @@ VALUES
 (3, 'Student Three', 'student3@alu.edu', 3, '2026-01-12'),
 (4, 'Student Four', 'student4@alu.edu', 4, '2026-01-13'),
 (5, 'Student Five', 'student5@alu.edu', 6, '2026-01-14');
+# Find students in classroom 1 - Juliana Ngoh
+SELECT *
+FROM Students
+WHERE classroom_id = 1;
