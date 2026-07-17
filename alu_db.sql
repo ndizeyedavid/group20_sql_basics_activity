@@ -88,3 +88,8 @@ VALUES
 (205, 'Entrepreneurship Society', 'Business', 105),
 (206, 'Coding Bootcamp', 'Technology', 101),
 (207, 'Chess Club', 'Academic', 102);
+
+# Find activities that belong to the 'Technology' category - Calvin
+SELECT *
+FROM Extra_Curricular_Activities
+WHERE category = 'Technology';
