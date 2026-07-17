@@ -172,3 +172,9 @@ SELECT Courses.course_id, Courses.course_name, Courses.credits, Faculty.name, Cl
         INNER JOIN Faculty ON Courses.faculty_id = Faculty.faculty_id 
         INNER JOIN Classroom ON Courses.classroom_id = Classroom.classroom_id
             WHERE Faculty.faculty_id = 105
+
+# Updating a Course name and credits - David
+UPDATE Courses SET 
+    course_name = "Game development using Unreal Engine 5",
+    credits = 30
+        WHERE course_id = 304
