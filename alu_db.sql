@@ -146,6 +146,15 @@ CREATE TABLE Courses(
     credits INT NOT NULL,
     faculty_id INT NOT NULL,
     classroom_id INT NOT NULL,
-    Foreign Key (faculity_id) REFERENCES Faculty(faculity_id),
+    Foreign Key (faculty_id) REFERENCES Faculty(faculty_id),
     Foreign Key (classroom_id) REFERENCES Classroom(classroom_id)
-)
+);
+
+INSERT INTO courses
+    VALUES
+        (301, 'Intro to Software Engineering', 3, 101, 1),
+        (303, 'Entrepreneurship', 3, 103, 3),
+        (302, 'Javascript and its origin', 4, 102, 2),
+        (304, 'Drama and Performance', 2, 104, 4),
+        (305, 'Business Strategy', 3, 105, 7),
+        (306, 'Advanced Coding', 4, 106, 6);
