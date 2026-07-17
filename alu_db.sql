@@ -98,3 +98,7 @@ WHERE category = 'Technology';
 UPDATE Extra_Curricular_Activities
 SET activity_name = 'Advanced Robotics Club'
 WHERE activity_id = 201;
+
+# Delete one specific activity - Calvin
+DELETE FROM Extra_Curricular_Activities
+WHERE activity_id = 207;
