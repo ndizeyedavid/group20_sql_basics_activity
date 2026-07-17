@@ -77,3 +77,14 @@ CREATE TABLE Extra_Curricular_Activities (
 	faculty_advisor_id INT,
 	FOREIGN KEY (faculty_advisor_id) REFERENCES Faculty(faculty_id)
 );
+
+# Insert sample records - Calvin
+INSERT INTO Extra_Curricular_Activities (activity_id, activity_name, category, faculty_advisor_id)
+VALUES
+(201, 'Robotics Club', 'Technology', 101),
+(202, 'Debate Society', 'Academic', 102),
+(203, 'Basketball Team', 'Sports', 103),
+(204, 'Drama Club', 'Arts', 104),
+(205, 'Entrepreneurship Society', 'Business', 105),
+(206, 'Coding Bootcamp', 'Technology', 101),
+(207, 'Chess Club', 'Academic', 102);
