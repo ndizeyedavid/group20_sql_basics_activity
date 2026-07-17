@@ -25,3 +25,7 @@ WHERE department = 'Software Engineering';
 UPDATE Faculty
 SET department = 'Software Engineering'
 WHERE faculty_id = 103;
+
+# Delete a record - Kelvin Bruce
+DELETE FROM Faculty
+WHERE faculty_id = 106;
