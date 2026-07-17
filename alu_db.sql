@@ -95,3 +95,6 @@ WHERE classroom_id = 1;
 UPDATE Students
 SET email = 'student4_updated@alu.edu'
 WHERE student_id = 4;
+# Delete a student record - Juliana Ngoh
+DELETE FROM Students
+WHERE student_id = 5;
