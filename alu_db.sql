@@ -1,9 +1,11 @@
+-- 1. Creating the Table -- Elyse
 CREATE TABLE Classroom (
 	classroom_id INT PRIMARY KEY,
 	room_number VARCHAR(10) NOT NULL,
 	building VARCHAR(50) NOT NULL,
 	capacity INT
 );
+-- 2. Inserting 5-7 Records -- Elyse
 
 INSERT INTO
     Classroom (
@@ -20,77 +22,29 @@ VALUES (1, '101', 'Main Hall', 30),
     (6, '302', 'Arts Building', 50),
     (7, '110', 'Main Hall', 45);
 
-SELECT * FROM Classroom WHERE building = 'Main Hall';
-
-SELECT * FROM Classroom WHERE capacity > 30;
-
-UPDATE Classroom
-SET
-    capacity = 60,
-    room_number = '303'
-WHERE
-    classroom_id = 6;
-
-SELECT * FROM Classroom WHERE classroom_id = 6;
-
-DELETE FROM Classroom WHERE classroom_id = 5;
-
-SELECT * FROM Classroom;
-
-# Create faculty_table - Kelvin Bruce
-CREATE TABLE Faculty ( 
-	faculty_id INT PRIMARY KEY,
-	name VARCHAR(100),
-	email VARCHAR(100),
-	department VARCHAR(50)
-);
-
-# Insert sample records - Kelvin Bruce
-INSERT INTO Faculty (faculty_id, name, email, department)
-VALUES 
-(101, 'Dr. Alice Johnson', 'alice.johnson@aluedu.com', 'Software Engineering'),
-(102, 'Dr. Brian Smith', 'brian.smith@aluedu.com', 'International Business and Trade'),
-(103, 'Dr. Catherine Brown', 'catherine.brown@aluedu.com', 'Entrepreneurial Leadership'),
-(104, 'Dr. David Wilson', 'david.wilson@aluedu.com', 'Entrepreneurial Leadership'),
-(105, 'Dr. Emily Davis', 'emily.davis@aluedu.com', 'Software Engineering'),
-(106, 'Dr. Frank Miller', 'frank.miller@aluedu.com', 'International Business and Trade');
-
-# Find all faculty members that belong to 'Software Engineering' department - Kelvin Bruce
+-- 3. Fetching classrooms using WHERE clause -- Elyse
+-- a) Classrooms in a specific building -- Elyse
 SELECT *
-FROM Faculty
-WHERE department = 'Software Engineering';
+FROM Classroom
+WHERE building = 'Main Hall';
 
-# Update department - Kelvin Bruce
-UPDATE Faculty
-SET department = 'Software Engineering'
-WHERE faculty_id = 103;
-
-# Delete a record - Kelvin Bruce
-DELETE FROM Faculty
-
-# Create Students table - Juliana Ngoh
-CREATE TABLE Students (
-    student_id INT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    classroom_id INT,
-    enrollment_date DATE,
-    FOREIGN KEY (classroom_id) REFERENCES Classroom(classroom_id)
-);
-
-# Insert sample records - Juliana Ngoh
-INSERT INTO Students (student_id, name, email, classroom_id, enrollment_date)
-  VALUES
-    (1, 'Student One', 'student1@alu.edu', 1, '2026-01-10'),
-    (2, 'Student Two', 'student2@alu.edu', 2, '2026-01-11'),
-    (3, 'Student Three', 'student3@alu.edu', 3, '2026-01-12'),
-    (4, 'Student Four', 'student4@alu.edu', 4, '2026-01-13'),
-    (5, 'Student Five', 'student5@alu.edu', 6, '2026-01-14');
-
-# Find students in classroom 1 - Juliana Ngoh
-SELECT * FROM Students WHERE classroom_id = 1;
-
-# Display all students - Juliana Ngoh
+-- b) Classrooms with capacity greater than 30 -- Elyse
+SELECT *
+FROM Classroom
+WHERE capacity > 30;
+-- Updating a classroom by classroom_id -- Elyse
+UPDATE Classroom
+SET capacity =60,
+	room_number = '303'
+WHERE classroom_id = 6;
+-- Verifying the update -- Elyse
+SELECT *
+FROM Classroom
+WHERE classroom_id = 6;
+-- 5. Deleting one specific classroom -- Elyse
+DELETE FROM Classroom
+WHERE classroom_id = 5;
+-- Verifying the deletion -- Elyse
 SELECT *
 FROM Students;
 
