@@ -6,7 +6,6 @@ In repository we have a collaborative SQL script, developed in strict dependency
 
 <img width="1448" height="312" alt="image" src="https://github.com/user-attachments/assets/52484fb1-4791-4bee-a235-4d15d5305476" />
 
-
 ## Team Roles
 
 | Team Member | Table / Task Assigned               | Dependency                                   |
@@ -18,7 +17,7 @@ In repository we have a collaborative SQL script, developed in strict dependency
 | **David**   | `Courses` + Junction Tables         | Requires `Students`, `Courses`, `Activities` |
 | **Jimmy**   | Normalization Analysis              | Requires entire database                     |
 
-## 🚀 How to Run the Script
+## How to Run the Script
 
 1. Clone this repository to your local machine:
 
