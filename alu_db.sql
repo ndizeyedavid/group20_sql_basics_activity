@@ -16,7 +16,12 @@ VALUES
 (105, 'Dr. Emily Davis', 'emily.davis@aluedu.com', 'Software Engineering'),
 (106, 'Dr. Frank Miller', 'frank.miller@aluedu.com', 'International Business and Trade');
 
-# Find all faculty members that belong to 'Software Engineering' department
+# Find all faculty members that belong to 'Software Engineering' department - Kelvin Bruce
 SELECT *
 FROM Faculty
 WHERE department = 'Software Engineering';
+
+# Update department - Kelvin Bruce
+UPDATE Faculty
+SET department = 'Software Engineering'
+WHERE faculty_id = 103;
