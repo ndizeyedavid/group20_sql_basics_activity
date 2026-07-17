@@ -98,3 +98,6 @@ WHERE student_id = 4;
 # Delete a student record - Juliana Ngoh
 DELETE FROM Students
 WHERE student_id = 5;
+# Display all students - Juliana Ngoh
+SELECT *
+FROM Students;
