@@ -79,3 +79,11 @@ CREATE TABLE Students (
     enrollment_date DATE,
     FOREIGN KEY (classroom_id) REFERENCES Classroom(classroom_id)
 );
+# Insert sample records - Juliana Ngoh
+INSERT INTO Students (student_id, name, email, classroom_id, enrollment_date)
+VALUES
+(1, 'Student One', 'student1@alu.edu', 1, '2026-01-10'),
+(2, 'Student Two', 'student2@alu.edu', 2, '2026-01-11'),
+(3, 'Student Three', 'student3@alu.edu', 3, '2026-01-12'),
+(4, 'Student Four', 'student4@alu.edu', 4, '2026-01-13'),
+(5, 'Student Five', 'student5@alu.edu', 6, '2026-01-14');
