@@ -16,3 +16,7 @@ VALUES
 (105, 'Dr. Emily Davis', 'emily.davis@aluedu.com', 'Software Engineering'),
 (106, 'Dr. Frank Miller', 'frank.miller@aluedu.com', 'International Business and Trade');
 
+# Find all faculty members that belong to 'Software Engineering' department
+SELECT *
+FROM Faculty
+WHERE department = 'Software Engineering';
