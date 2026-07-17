@@ -93,3 +93,8 @@ VALUES
 SELECT *
 FROM Extra_Curricular_Activities
 WHERE category = 'Technology';
+
+# Update an activity by activity_id - Calvin
+UPDATE Extra_Curricular_Activities
+SET activity_name = 'Advanced Robotics Club'
+WHERE activity_id = 201;
