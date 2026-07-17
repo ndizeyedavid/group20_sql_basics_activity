@@ -135,3 +135,50 @@ WHERE activity_id = 201;
 # Delete one specific activity - Calvin
 DELETE FROM Extra_Curricular_Activities
 WHERE activity_id = 207;
+
+
+---
+
+# Create courses table - David
+CREATE TABLE Courses(
+    course_id INT NOT NULL PRIMARY KEY,
+    course_name VARCHAR(100) NOT NULL,
+    credits INT NOT NULL,
+    faculty_id INT NOT NULL,
+    classroom_id INT NOT NULL,
+    Foreign Key (faculty_id) REFERENCES Faculty(faculty_id),
+    Foreign Key (classroom_id) REFERENCES Classroom(classroom_id)
+);
+
+# Inserting 6 sample records - David
+INSERT INTO Courses
+    VALUES
+        (301, 'Intro to Software Engineering', 3, 101, 1),
+        (303, 'Entrepreneurship', 3, 103, 3),
+        (302, 'Javascript and its origin', 4, 102, 2),
+        (304, 'Drama and Performance', 2, 104, 4),
+        (305, 'Business Strategy', 3, 105, 7),
+        (306, 'Advanced Coding', 4, 106, 6);
+
+# Selecting course records using joins to expand the classroom and faculty details - David
+SELECT Courses.course_id, Courses.course_name, Courses.credits, Faculty.name, Classroom.building, Classroom.capacity
+    FROM Courses
+        INNER JOIN Faculty ON Courses.faculty_id = Faculty.faculty_id 
+        INNER JOIN Classroom ON Courses.classroom_id = Classroom.classroom_id;
+
+# Selecting all courses taught by "Dr Emily Davis" - David
+SELECT Courses.course_id, Courses.course_name, Courses.credits, Faculty.name, Classroom.building, Classroom.capacity
+    FROM Courses
+        INNER JOIN Faculty ON Courses.faculty_id = Faculty.faculty_id 
+        INNER JOIN Classroom ON Courses.classroom_id = Classroom.classroom_id
+            WHERE Faculty.faculty_id = 105
+
+# Updating a Course name and credits - David
+UPDATE Courses SET 
+    course_name = "Game development using Unreal Engine 5",
+    credits = 30
+        WHERE course_id = 304
+
+# Delete a cource - David
+DELETE FROM Courses
+    WHERE course_id = 305
