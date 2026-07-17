@@ -135,3 +135,17 @@ WHERE activity_id = 201;
 # Delete one specific activity - Calvin
 DELETE FROM Extra_Curricular_Activities
 WHERE activity_id = 207;
+
+
+---
+
+# Create courses table - David
+CREATE TABLE Courses(
+    course_id INT NOT NULL PRIMARY KEY,
+    course_name VARCHAR(100) NOT NULL,
+    credits INT NOT NULL,
+    faculty_id INT NOT NULL,
+    classroom_id INT NOT NULL,
+    Foreign Key (faculity_id) REFERENCES Faculty(faculity_id),
+    Foreign Key (classroom_id) REFERENCES Classroom(classroom_id)
+)
