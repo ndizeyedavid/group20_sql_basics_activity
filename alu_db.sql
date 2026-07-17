@@ -178,3 +178,7 @@ UPDATE Courses SET
     course_name = "Game development using Unreal Engine 5",
     credits = 30
         WHERE course_id = 304
+
+# Delete a cource - David
+DELETE FROM Courses
+    WHERE course_id = 305
