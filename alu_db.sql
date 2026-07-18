@@ -136,3 +136,72 @@ UPDATE Courses SET
 # Delete a cource - David
 DELETE FROM Courses
     WHERE course_id = 305
+---
+
+# 6. Normalization, Joins & Aggregation - Jimmy
+
+# Normalization paragraph
+# This schema satisfies 1NF, 2NF, and 3NF. 1NF: every column holds a single
+# atomic value, with no repeating groups (a student's courses are not stored
+# as a list inside Students). 2NF: every table has a single-column primary
+# key, so no non-key attribute can partially depend on only part of a key.
+# 3NF: no transitive dependencies exist - e.g. a Faculty member's department
+# lives only in Faculty and is reached through faculty_id, it is not
+# duplicated inside Courses. The many-to-many relationships (students to
+# courses, students to activities) are resolved with junction tables
+# (Student_Courses, Student_Activities) instead of repeating course or
+# activity lists inside Students, which is what eliminates the
+# many-to-many duplication problem.
+
+# Junction tables (needed for the joins below to run)
+CREATE TABLE Student_Courses (
+    student_id INT,
+    course_id INT,
+    PRIMARY KEY (student_id, course_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+);
+
+CREATE TABLE Student_Activities (
+    student_id INT,
+    activity_id INT,
+    PRIMARY KEY (student_id, activity_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (activity_id) REFERENCES Extra_Curricular_Activities(activity_id)
+);
+
+INSERT INTO Student_Courses (student_id, course_id) VALUES
+(1, 301), (2, 302), (3, 303), (4, 304), (1, 306);
+
+INSERT INTO Student_Activities (student_id, activity_id) VALUES
+(1, 201), (2, 202), (3, 203), (4, 204), (2, 205);
+
+# Join Query 1: student enrollment sentence
+SELECT CONCAT('Student ', s.name, ' is enrolled in Course ', c.course_name,
+    ', taught by Faculty ', f.name, ', in Classroom ', cl.room_number, '.') AS enrollment_sentence
+FROM Students s
+JOIN Student_Courses sc ON s.student_id = sc.student_id
+JOIN Courses c ON sc.course_id = c.course_id
+JOIN Faculty f ON c.faculty_id = f.faculty_id
+JOIN Classroom cl ON c.classroom_id = cl.classroom_id;
+
+# Join Query 2: student activity sentence
+SELECT CONCAT('Student ', s.name, ' participates in Activity ', a.activity_name,
+    ', advised by Faculty ', f.name, '.') AS activity_sentence
+FROM Students s
+JOIN Student_Activities sa ON s.student_id = sa.student_id
+JOIN Extra_Curricular_Activities a ON sa.activity_id = a.activity_id
+JOIN Faculty f ON a.faculty_advisor_id = f.faculty_id;
+
+# Join Query 3: students, their home classroom, and their enrolled course
+SELECT s.name AS student_name, cl.building, c.course_name
+FROM Students s
+JOIN Classroom cl ON s.classroom_id = cl.classroom_id
+JOIN Student_Courses sc ON s.student_id = sc.student_id
+JOIN Courses c ON sc.course_id = c.course_id;
+
+# Aggregate query: number of students per course
+SELECT c.course_name, COUNT(sc.student_id) AS total_students
+FROM Courses c
+LEFT JOIN Student_Courses sc ON c.course_id = sc.course_id
+GROUP BY c.course_name;
