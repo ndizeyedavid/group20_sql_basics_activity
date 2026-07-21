@@ -1,3 +1,8 @@
+CREATE DATABASE alu_db
+    DEFAULT CHARACTER SET = 'utf8mb4';
+
+USE alu_db;
+
 -- 1. Creating the Table -- Elyse
 CREATE TABLE Classroom (
 	classroom_id INT PRIMARY KEY,
