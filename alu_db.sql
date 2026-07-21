@@ -175,7 +175,11 @@ CREATE TABLE Student_Activities (
     FOREIGN KEY (activity_id) REFERENCES Extra_Curricular_Activities(activity_id)
 );
 
+INSERT INTO Student_Courses (student_id, course_id) VALUES
+(1, 301), (2, 302), (3, 303), (4, 304), (1, 306);
 
+INSERT INTO Student_Activities (student_id, activity_id) VALUES
+(1, 201), (2, 202), (3, 203), (4, 204), (2, 205);
 
 # Join Query 1: student enrollment sentence
 SELECT CONCAT('Student ', s.name, ' is enrolled in Course ', c.course_name,
