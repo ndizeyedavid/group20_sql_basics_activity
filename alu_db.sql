@@ -1,3 +1,4 @@
+-- Active: 1784308640099@@127.0.0.1@3306@test
 CREATE DATABASE alu_db
     DEFAULT CHARACTER SET = 'utf8mb4';
 
@@ -49,9 +50,61 @@ WHERE classroom_id = 6;
 -- 5. Deleting one specific classroom -- Elyse
 DELETE FROM Classroom
 WHERE classroom_id = 5;
--- Verifying the deletion -- Elyse
+
+# Create faculty_table - Kelvin Bruce
+CREATE TABLE Faculty ( 
+	faculty_id INT PRIMARY KEY,
+	name VARCHAR(100),
+	email VARCHAR(100),
+	department VARCHAR(50)
+);
+
+# Insert sample records - Kelvin Bruce
+INSERT INTO Faculty (faculty_id, name, email, department)
+VALUES 
+(101, 'Dr. Alice Johnson', 'alice.johnson@alueducation.com', 'Software Engineering'),
+(102, 'Dr. Brian Smith', 'brian.smith@alueducation.com', 'International Business and Trade'),
+(103, 'Dr. Catherine Brown', 'catherine.brown@alueducation.com', 'Entrepreneurial Leadership'),
+(104, 'Dr. David Wilson', 'david.wilson@alueducation.com', 'Entrepreneurial Leadership'),
+(105, 'Dr. Emily Davis', 'emily.davis@alueducation.com', 'Software Engineering'),
+(106, 'Dr. Frank Miller', 'frank.miller@alueducation.com', 'International Business and Trade');
+
+# Find all faculty members that belong to 'Software Engineering' department - Kelvin Bruce
 SELECT *
-FROM Students;
+FROM Faculty
+WHERE department = 'Software Engineering';
+
+# Update department - Kelvin Bruce
+UPDATE Faculty
+SET department = 'Software Engineering'
+WHERE faculty_id = 103;
+
+# Delete a record - Kelvin Bruce
+-- DELETE FROM Faculty WHERE faculty_id = 103;
+
+# Create Students table - Juliana Ngoh
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    classroom_id INT,
+    enrollment_date DATE,
+    FOREIGN KEY (classroom_id) REFERENCES Classroom(classroom_id)
+);
+# Insert sample records - Juliana Ngoh
+INSERT INTO Students (student_id, name, email, classroom_id, enrollment_date)
+VALUES
+(1, 'Juliana', 'juliana@alustudent.com', 1, '2026-01-10'),
+(2, 'Priscilla', 'priscilla@alustudent.com', 2, '2026-01-11'),
+(3, 'Calvin', 'calvin@alustudent.com', 3, '2026-01-12'),
+(4, 'David', 'david@alustudent.com', 4, '2026-01-13'),
+(5, 'Elyse', 'elyse@alustudent.com', 6, '2026-01-14'),
+(6, 'Bruce', 'bruce@alustudent.com', 4, '2026-01-14'),
+(7, 'Jimmy', 'jimmy@alustudent.com', 6, '2026-01-14');
+# Find students in classroom 1 - Juliana Ngoh
+SELECT *
+FROM Students
+WHERE classroom_id = 1;
 
 # Update a student's email - Juliana Ngoh
 UPDATE Students
@@ -78,7 +131,7 @@ INSERT INTO Extra_Curricular_Activities (activity_id, activity_name, category, f
         (202, 'Debate Society', 'Academic', 102),
         (203, 'Basketball Team', 'Sports', 103),
         (204, 'Drama Club', 'Arts', 104),
-        (205, 'Entrepreneurship Society', 'Business', 105),
+        (205, 'Entrepreneurship Society', 'Business', 104),
         (206, 'Coding Bootcamp', 'Technology', 101),
         (207, 'Chess Club', 'Academic', 102);
 
@@ -140,7 +193,7 @@ UPDATE Courses SET
 
 # Delete a cource - David
 DELETE FROM Courses
-    WHERE course_id = 305
+    WHERE course_id = 305;
 ---
 
 
@@ -210,3 +263,12 @@ SELECT c.course_name, COUNT(sc.student_id) AS total_students
 FROM Courses c
 LEFT JOIN Student_Courses sc ON c.course_id = sc.course_id
 GROUP BY c.course_name;
+
+
+SHOW TABLES;
+
+SELECT  * FROM Faculty;
+SELECT * FROM extra_curricular_activities; 
+
+SELECT faculty.name, extra_curricular_activities.activity_name 
+FROM extra_curricular_activities INNER JOIN Faculty ON Faculty.faculty_id = extra_curricular_activities.faculty_advisor_id WHERE faculty_advisor_id = 104;
