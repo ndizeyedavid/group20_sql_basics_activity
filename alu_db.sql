@@ -143,22 +143,11 @@ DELETE FROM Courses
     WHERE course_id = 305
 ---
 
-# 6. Normalization, Joins & Aggregation - Jimmy
 
-# Normalization paragraph
-# This schema satisfies 1NF, 2NF, and 3NF. 1NF: every column holds a single
-# atomic value, with no repeating groups (a student's courses are not stored
-# as a list inside Students). 2NF: every table has a single-column primary
-# key, so no non-key attribute can partially depend on only part of a key.
-# 3NF: no transitive dependencies exist - e.g. a Faculty member's department
-# lives only in Faculty and is reached through faculty_id, it is not
-# duplicated inside Courses. The many-to-many relationships (students to
-# courses, students to activities) are resolved with junction tables
-# (Student_Courses, Student_Activities) instead of repeating course or
-# activity lists inside Students, which is what eliminates the
-# many-to-many duplication problem.
 
-# Junction tables (needed for the joins below to run)
+# Normalization paragraph - Priscilla
+
+# Junction tables (needed for the joins below to run) - Jimmy
 CREATE TABLE Student_Courses (
     student_id INT,
     course_id INT,
