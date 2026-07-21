@@ -146,6 +146,17 @@ DELETE FROM Courses
 
 
 # Normalization paragraph - Priscilla
+# This schema satisfies 1NF, 2NF, and 3NF. 1NF: every column holds a single
+# atomic value, with no repeating groups (a student's courses are not stored
+# as a list inside Students). 2NF: every table has a single-column primary
+# key, so no non-key attribute can partially depend on only part of a key.
+# 3NF: no transitive dependencies exist - e.g. a Faculty member's department
+# lives only in Faculty and is reached through faculty_id, it is not
+# duplicated inside Courses. The many-to-many relationships (students to
+# courses, students to activities) are resolved with junction tables
+# (Student_Courses, Student_Activities) instead of repeating course or
+# activity lists inside Students, which is what eliminates the
+# many-to-many duplication problem.
 
 # Junction tables (needed for the joins below to run) - Jimmy
 CREATE TABLE Student_Courses (
@@ -164,11 +175,7 @@ CREATE TABLE Student_Activities (
     FOREIGN KEY (activity_id) REFERENCES Extra_Curricular_Activities(activity_id)
 );
 
-INSERT INTO Student_Courses (student_id, course_id) VALUES
-(1, 301), (2, 302), (3, 303), (4, 304), (1, 306);
 
-INSERT INTO Student_Activities (student_id, activity_id) VALUES
-(1, 201), (2, 202), (3, 203), (4, 204), (2, 205);
 
 # Join Query 1: student enrollment sentence
 SELECT CONCAT('Student ', s.name, ' is enrolled in Course ', c.course_name,
