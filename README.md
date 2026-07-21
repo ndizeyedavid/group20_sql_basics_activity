@@ -15,7 +15,8 @@ In repository we have a collaborative SQL script, developed in strict dependency
 | **Juliana** | `Students` Table                    | Requires `Classroom`                         |
 | **Calvin**  | `Extra_Curricular_Activities` Table | Requires `Faculty`                           |
 | **David**   | `Courses` + Junction Tables         | Requires `Students`, `Courses`, `Activities` |
-| **Jimmy**   | Normalization Analysis              | Requires entire database                     |
+| **Jimmy**   | Junction tables              | Requires entire database                     |
+| **Priscilla**   | Normalization Analysis              | Requires entire database                     |
 
 ## How to Run the Script
 
